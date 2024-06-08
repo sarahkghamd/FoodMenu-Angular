@@ -1,0 +1,48 @@
+<main>
+  <div class="container">
+    <div class="row mt-5">
+      <div class="col text-center">
+        <h1 class="alert alert-dark">Food Menu</h1>
+        <div class="row bg-dark text-white">
+          <div class="col">
+            <span class="p-2">total price</span>
+            <span class="p-2">{{total}}</span>
+            
+          </div>
+          <div class="col">
+            <span class="p-2">number of orders</span>
+            <span class="p-2">{{quantity}}</span>
+          </div>
+        </div>
+        <div class="card d-flex align-items-center justify-content-center">
+          <div class="card-body">
+            <input class="form-control mb-5 mt-4" placeholder="Search" type="text" id="search"  [(ngModel)]="foodname">
+            <table class="table">
+              <thead>
+                <tr>
+                  <td>procuct num</td>
+                  <td>product name</td>
+                  <td>description</td>
+                  <td>price</td>
+                  <td>image</td>
+                  <td>select</td>
+                </tr>
+
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of search(foodmenu)">
+                  <td>{{item.id}}</td>
+                  <td>{{item.name}}</td>
+                  <td>{{item.description}}</td>
+                  <td>{{item.price}}</td>
+                  <td><img [src]="item.img" alt="" width="40px" height="40px"></td>
+                  <td><input type="checkbox" (change)="sum($event,item.price)"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
